@@ -1,4 +1,4 @@
-<img src="https://github.com/markett-opensource/m-code/blob/main/qrcode.png?raw=true" width="200">
+<img src="image-target.png" width="180">
 
 # M-CODE
 
