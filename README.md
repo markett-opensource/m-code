@@ -1,3 +1,5 @@
+<img src="https://github.com/markett-opensource/m-code/blob/main/qrcode.png?raw=true" width="200">
+
 # M-CODE
 
 AR CAM with support for .mp4 video in chroma key, derived from <a href="https://github.com/hiukim/mind-ar-js">MindAR.js</a>
