@@ -2,89 +2,81 @@
 /////////////////////////////////////////////// -->
 <html lang="pt-br">
 
-    <head>
-        <title>M-CODE</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="theme-color" content="#222">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <link rel="icon" href="mcode.png" type="image/x-icon">
+<head>
+    <title>M-CODE</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#222">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" href="./mcode.png" type="image/x-icon">
 
-        <link rel="stylesheet" href="engine/style.css">
-        <script src="engine/js/jquery.min.js"></script>
-            <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-        <script src="engine/js/mindar-image-aframe.prod.1.2.5.js"></script>
-        <script src="engine/js/aframe-chromakey-material.min.js"></script>
-        <script src="engine/js/aframe-extras.min.js"></script>
-    </head>
+    <link rel="stylesheet" href="engine/style.css">
+    <script src="engine/js/jquery.min.js"></script>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="engine/js/mindar-image-aframe.prod.1.2.5.js"></script>
+    <script src="engine/js/aframe-chromakey-material.min.js"></script>
+    <script src="engine/js/aframe-extras.min.js"></script>
+</head>
 
-    <body>
-        <!-- ///////////////////////// SPLASH SCREEN
+<body>
+    <!-- ///////////////////////// SPLASH SCREEN
 /////////////////////////////////////////////// -->
-        <div class="splash-screen">
-            <p>Posicione a câmera sobre o QR-Code para visualizar o conteúdo exclusivo!</p>
-            <small>
-                Atenção: 
-                <br>Esta funcionalidade e exclusiva para QR-Codes Markett. 
-                Você precisa autorizar o acesso a sua câmera.
-                <br><br>
-                v0.3
-                <!--<button id="request-camera-access">Toque aqui para autorizar caso o pedido não apareça</button>-->
-            </small>
-            <button class="btn-alt" onclick="init()">OK!</button>
-        </div>
+    <div class="splash-screen">
+        <p>Posicione a câmera sobre o QR-Code para visualizar o conteúdo exclusivo!</p>
+        <small>
+            Atenção:
+            <br>Esta funcionalidade e exclusiva para QR-Codes Markett.
+            Você precisa autorizar o acesso a sua câmera.
+            <br><br>
+            v0.4
+            <!--<button id="request-camera-access">Toque aqui para autorizar caso o pedido não apareça</button>-->
+        </small>
+        <button class="btn-alt" onclick="init()">OK!</button>
+    </div>
 
-        <!-- ///////////////////////// 01
+    <!-- ///////////////////////// 01
 /////////////////////////////////////////////// -->
-        <div class="cta">
-            <a href="">Botão de Ação (CTA)</a>
-        </div>
+    <div class="cta">
+        <a href="">Botão de Ação (CTA)</a>
+    </div>
 
-        <a-scene 
-                 mindar-image="imageTargetSrc: mcode-target.mind; filterMinCF: 0.001; filterBeta: 0.001; warmupTolerance: 1"
-                 color-space="sRGB" 
-                 renderer="colorManagement: true, physicallyCorrectLights" 
-                 vr-mode-ui="enabled: false" 
-                 device-orientation-permission-ui="enabled: false">
+    <a-scene mindar-image="imageTargetSrc: mcode-target.mind; filterMinCF: 0.001; filterBeta: 0.001; warmupTolerance: 1"
+        color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false">
 
-            <a-assets>
-                <video id="videoPlayer" 
-                       loop="true" autoplay playsinline webkit-playsinline crossorigin="anonymous" muted="true"
-                       src="media/m-code.mp4">
-                </video>
-            </a-assets>
+        <a-assets>
+            <video id="videoPlayer" loop="true" autoplay playsinline webkit-playsinline crossorigin="anonymous"
+                muted="true" src="media/m-code.mp4">
+            </video>
+        </a-assets>
 
-            <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-            <a-entity mindar-image-target="targetIndex: 0">
-                <a-video 
-                         shader="chromakey" 
-                         color="0.1 0.9 0.2" 
-                         src="#videoPlayer" 
-                         width="2" height="2" 
-                         position="0 0 0" 
-                         filter="blur(1px)">
-                </a-video>
-            </a-entity>
-        </a-scene>
+        <a-entity mindar-image-target="targetIndex: 0">
+            <a-video shader="chromakey" color="0.1 0.9 0.2" src="#videoPlayer" width="2" height="2" position="0 0 0"
+                filter="blur(1px)">
+            </a-video>
+        </a-entity>
+    </a-scene>
 
-        <script type="text/javascript">
+    <script type="text/javascript">
 
-            window.addEventListener('targetFound', function () {
-                var videoElement = document.getElementById("videoPlayer");
-                videoElement.play();
-            });
+        window.addEventListener('targetFound', function () {
+            var videoElement = document.getElementById("videoPlayer");
+            videoElement.play();
+        });
 
-            window.addEventListener('targetLost', function () {
-                var videoElement = document.getElementById("videoPlayer");
-                videoElement.load();
-            });
+        window.addEventListener('targetLost', function () {
+            var videoElement = document.getElementById("videoPlayer");
+            videoElement.load();
+        });
 
-            function init(){
-                $(".splash-screen").fadeOut();
-                $(".cta").fadeIn();
-            }
+        function init() {
+            $(".splash-screen").fadeOut();
+            $(".cta").fadeIn();
+        }
 
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>
