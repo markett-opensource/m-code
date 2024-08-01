@@ -45,7 +45,7 @@ html {
 
 .splash-screen button{
     background-color: aliceblue;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     width: 100% !important;
     height: 60px;
     border-radius: 30px;
